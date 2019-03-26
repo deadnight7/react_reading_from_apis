@@ -1,25 +1,53 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+//import Posts from './Posts'
+import PostList from './PostList'
 
 class App extends Component {
+
+  state = {
+    response: null
+  }
+
+  componentDidMount() {
+    let currentComponent = this;
+    // Make a request for a user with a given ID
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        currentComponent.setState({ response : response });
+        ///console.log(response.data);
+       // this.setState({ posts: response.data });
+      })
+      // .catch(function (error) {
+      //   // handle error
+      //   console.log("unablea");
+      //   console.log(error);
+      //   // this.setState({ posts: [] });
+       
+      // })
+      // .then(function () {
+      //   // always executed
+      // });
+
+  }
+
   render() {
+    console.log("Render..!");
+   
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <div className="row">
+          <h1 align="center">
+            Screams...!
+        </h1>
+
+
+        <PostList response={this.state.response}/>
+
+        </div>
       </div>
     );
   }
