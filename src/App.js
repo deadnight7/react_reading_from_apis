@@ -19,7 +19,7 @@ class App extends Component {
 
     // eslint-disable-next-line 
     responsePosts = responsePosts.filter((post)=>{
-      if (post.id !== key){
+      if (post.id !== key) {
         //Do not add in modified array
         return post;
       }
