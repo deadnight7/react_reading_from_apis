@@ -8,6 +8,7 @@ const post = (props) => {
             <p>
                 {props.body}
             </p>
+            <p className="delete" onClick={() => props.delete(props.index)} >Delete</p>
         </div>
     </div>
 }
